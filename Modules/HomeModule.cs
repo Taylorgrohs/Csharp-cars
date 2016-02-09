@@ -1,6 +1,7 @@
 using Nancy;
 using Carlist.Objects;
 using System.Collections.Generic;
+using System;
 
 namespace CarDealer
 {
@@ -8,7 +9,12 @@ namespace CarDealer
 {
     public HomeModule()
     {
-      Get["/"] = _ => View["/add_new_car.cshtml"];
+      Get["/"] = _ =>
+      {
+        Console.WriteLine("Home Directory");
+        List<Cars> car = Cars.ViewCars();
+        return View["view_all_cars.cshtml", car];
+      };
       Get["/view_all_cars"] = _ =>
       {
         List<Cars> car = Cars.ViewCars();
