@@ -1,0 +1,12 @@
+<h1>Car List</h1>
+<ul>
+  @foreach(var car in Model)
+  {
+    <li>@car.getYear() @car.getMake() @car.getModel()</li>
+    <ul>
+      <li>$@car.getPrice()</li>
+      <li>@car.getMiles() miles</li>
+    </ul>
+  }
+</ul>
+<p><a href="/">Add another car</a></p>
