@@ -10,7 +10,7 @@ namespace Carlist.Objects
     private string Model{ get; set; }
     private int Price{ get; set; }
     private int Miles{ get; set; }
-    public static List<Cars> CarsList = new List<Cars>{};
+    private static List<Cars> CarsList = new List<Cars>{};
 
     public Cars (int year, string make, string model, int price, int miles)
     {
@@ -42,14 +42,32 @@ namespace Carlist.Objects
       return Miles;
     }
 
-    public void AddCars(Cars newCar)
+    public void AddCars()
     {
-      CarsList.Add(newCar);
+      CarsList.Add(this);
     }
 
     public static List<Cars> ViewCars()
     {
       return CarsList;
     }
+
+    public static void DeleteAll()
+    {
+      CarsList.Clear();
+    }
+
+    // public List<Cars> searchCars(int maxPrice, int maxMiles)
+    // {
+    //   List<Cars> SearchCars = new List<Cars>{};
+    //   if(maxPrice <= getPrice() || maxMiles <= getMiles())
+    //   {
+    //     foreach(Cars matchingCar in CarsList)
+    //     {
+    //       searchCars.Add(matchingCar);
+    //     }
+    //   }
+    //   return SearchCars;
+    // }
   }
 }

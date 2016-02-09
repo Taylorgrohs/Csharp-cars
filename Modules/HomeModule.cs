@@ -26,8 +26,12 @@ namespace CarDealer
           int.TryParse(Request.Form["new-miles"], out carMiles);
 
           Cars newCar = new Cars(carYear, carMake, carModel, carPrice, carMiles);
-          newCar.AddCars(newCar);
+          newCar.AddCars();
           return View["/car_added.cshtml", newCar];
+      };
+      Post["/cars_cleared"] = _ => {
+        Cars.DeleteAll();
+        return View["cars_cleared.cshtml"];
       };
     }
   }
