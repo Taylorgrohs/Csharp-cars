@@ -57,17 +57,19 @@ namespace Carlist.Objects
       CarsList.Clear();
     }
 
-    // public List<Cars> searchCars(int maxPrice, int maxMiles)
-    // {
-    //   List<Cars> SearchCars = new List<Cars>{};
-    //   if(maxPrice <= getPrice() || maxMiles <= getMiles())
-    //   {
-    //     foreach(Cars matchingCar in CarsList)
-    //     {
-    //       searchCars.Add(matchingCar);
-    //     }
-    //   }
-    //   return SearchCars;
-    // }
+    public static List<Cars> searchCars(int maxPrice, int maxMiles)
+    {
+      List<Cars> searchCars = new List<Cars>{};
+
+      foreach(Cars matchingCar in CarsList)
+      {
+        if( matchingCar.getPrice() <= maxPrice && matchingCar.getMiles() <= maxMiles)
+        {
+          searchCars.Add(matchingCar);
+        }
+
+      }
+      return searchCars;
+    }
   }
 }

@@ -33,6 +33,16 @@ namespace CarDealer
         Cars.DeleteAll();
         return View["cars_cleared.cshtml"];
       };
+      Get["/search_cars"] = _ => View["search_cars.cshtml"];
+      Post["/view_result"] = _ =>
+      {
+        int maxPrice;
+        int.TryParse(Request.Form["max-price"], out maxPrice);
+        int maxMiles;
+        int.TryParse(Request.Form["max-miles"], out maxMiles);
+        List<Cars> results = Cars.searchCars(maxPrice, maxMiles);
+        return View["view_result.cshtml", results];
+      };
     }
   }
 }
